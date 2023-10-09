@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { IoMdAddCircleOutline } from "@react-icons/all-files/io/IoMdAddCircleOutline";
 import axios from "axios";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
-const InputTask = ({onGetTasks}) => {
+const InputTask = ({ onGetTasks }) => {
   const [task, setTask] = useState("");
 
   const handleSubmit = (e) => {
@@ -21,7 +21,7 @@ const InputTask = ({onGetTasks}) => {
       .then(() => {
         setTask("");
         onGetTasks();
-        toast('✨ Task added Successfully!', {
+        toast("✨ Task added Successfully!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -30,7 +30,7 @@ const InputTask = ({onGetTasks}) => {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
+        });
       })
       .catch((error) => {
         console.log(error);
