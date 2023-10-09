@@ -12,7 +12,7 @@ const InputTask = ({ onGetTasks }) => {
     const newTask = { name: task }; // Use a different variable name
 
     axios
-      .post("http://localhost:3000/api/v1/tasks", newTask, {
+      .post("https://task-manager-backend-koad.onrender.com/api/v1/tasks", newTask, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",

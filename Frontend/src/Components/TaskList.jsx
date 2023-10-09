@@ -12,7 +12,7 @@ const TaskList = ({ title }) => {
   // Function to get tasks
   const getTasks = () => {
     axios
-      .get("http://localhost:3000/api/v1/tasks")
+      .get("https://task-manager-backend-koad.onrender.com/api/v1/tasks")
       .then((response) => {
         // Update the tasks state with the fetched data
         setTasks(response.data.tasks);
@@ -25,7 +25,7 @@ const TaskList = ({ title }) => {
   // Function to delete tasks
   const deleteTask = (id) => {
     axios
-      .delete(`http://localhost:3000/api/v1/tasks/${id}`)
+      .delete(`https://task-manager-backend-koad.onrender.com/api/v1/tasks/${id}`)
       .then((response) => {
         console.log(response);
         getTasks();
@@ -48,7 +48,7 @@ const TaskList = ({ title }) => {
   // Function to delete all tasks
   const deleteAllTasks = () => {
     axios
-      .delete("http://localhost:3000/api/v1/tasks")
+      .delete("https://task-manager-backend-koad.onrender.com/api/v1/tasks")
       .then(() => {
         getTasks();
         toast("💥 All Tasks deleted Successfully!", {
