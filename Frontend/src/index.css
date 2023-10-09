@@ -446,8 +446,6 @@ button {
 
   .search-wrapper {
     width: 100%;
-
-
   }
 
   .search-wrapper input {
@@ -464,6 +462,5 @@ button {
   .task-container .input-edit {
     width: 90%;
     margin: 0 auto;
-
   }
 }
