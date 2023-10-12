@@ -12,7 +12,7 @@ const TaskList = ({ title }) => {
   // Function to get tasks
   const getTasks = () => {
     axios
-      .get("https://task-manager-backend-koad.onrender.com/api/v1/tasks")
+      .get("https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks")
       .then((response) => {
         // Update the tasks state with the fetched data
         setTasks(response.data.tasks);
@@ -25,7 +25,7 @@ const TaskList = ({ title }) => {
   // Function to delete tasks
   const deleteTask = (id) => {
     axios
-      .delete(`https://task-manager-backend-koad.onrender.com/api/v1/tasks/${id}`)
+      .delete(`https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks/${id}`)
       .then((response) => {
         console.log(response);
         getTasks();
@@ -48,7 +48,7 @@ const TaskList = ({ title }) => {
   // Function to delete all tasks
   const deleteAllTasks = () => {
     axios
-      .delete("https://task-manager-backend-koad.onrender.com/api/v1/tasks")
+      .delete("https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks")
       .then(() => {
         getTasks();
         toast("💥 All Tasks deleted Successfully!", {
@@ -68,12 +68,21 @@ const TaskList = ({ title }) => {
   };
 
   // Toggle the checkbox when clicked
-  const toggleCheckbox = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task._id === id ? { ...task, checked: !task.checked } : task
-      )
-    );
+  const toggleCheckbox = (id, completed) => {
+    axios
+      .patch(`https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks/${id}`, { completed: !completed }, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        getTasks();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // Use useEffect to call getTasks when the component mounts
@@ -107,8 +116,8 @@ const TaskList = ({ title }) => {
                   className="inp-cbx"
                   id={`cbx-${task._id}`}
                   type="checkbox"
-                  checked={task.checked || false}
-                  onChange={() => toggleCheckbox(task._id)}
+                  checked={task.completed}
+                  onChange={() => toggleCheckbox(task._id, task.completed)}
                   style={{
                     display: "none",
                   }}
