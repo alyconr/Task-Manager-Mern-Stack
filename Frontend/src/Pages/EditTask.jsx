@@ -15,7 +15,7 @@ const EditTask = () => {
     data: task,
     loading,
     error,
-  } = useFetch(`https://task-manager-backend-koad.onrender.com/api/v1/tasks/${id}`);
+  } = useFetch(`https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks/${id}`);
 
   const [editTask, setEditTask] = useState({ name: "" });
 
@@ -30,7 +30,7 @@ const EditTask = () => {
   const saveTask = () => {
     axios
       .patch(
-        `https://task-manager-backend-koad.onrender.com/api/v1/tasks/${id}`,
+        `https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks/${id}`,
         { name: editTask.name },
         {
           headers: {
