@@ -3,7 +3,7 @@ import useFetch from "../Utils/useFetch";
 
 const HomeTodo = () => {
 
-    const { data: tasks, loading, error } = useFetch("https://task-manager-backend-koad.onrender.com/api/v1/tasks");
+    const { data: tasks, loading, error } = useFetch("https://task-manager-alyconr.1.us-1.fl0.io/api/v1/tasks");
 
 return (
 <div className="TaskList">
